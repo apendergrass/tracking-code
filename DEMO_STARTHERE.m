@@ -1,11 +1,17 @@
-%%% UPDATED 2/24/16, version 0.1
-%%% Changes: 
-%%% 1. spatialregionneighborsearch.m -> spatialregionneighborsearchcentroid.m : Added meanlat and meanlon to region list
-%%% 2. trackcodematrix.m -> trackcodematrixempty.m : Restructured to handle times when there are no events (incidentally improved initialization). Also incorporated meanlat and meanlon
-%%% 3. changed handling of overlapthreshold. Now it must already exist when trackcodematixempty.m is called. 
-
-% Author: Angie Pendergrass. apgrass@uw.edu
-
+%%% version 0.1, 2/24/16
+% Author: Angeline Pendergrass. apgrass@uw.edu
+%
+%
+% This file demonstrates use of identification and tracking code for regions of precipitation above a threshold. 
+% Starting from a precipitation field at a number of timesteps on a cubed sphere grid (sample data included), 
+% a threshold for precipitation deemed "extreme" is calculated over the entire dataset,
+% applied to the field to make it binary, contiguous regions above the threshold are identified at each timestep, 
+% and these contiguous regions are tracked from one time to the next. 
+% 
+% Some scientific considerations and an application of the tracking code are shown in the following manuscript, which
+% you should cite if you use it the code or algorithm: 
+% Pendergrass, A.G., K.A. Reed and B. Medeiros, The link between extreme precipitation and convective organization in a warming climate, 
+% Submitted to Geophysical Research Letters on 29 June 2016. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % % % necessary preparation: cubesphereneighbors
@@ -41,7 +47,6 @@ pthresh=psort(round(length(psort)*.95));
 % % % now identify all the contiguous regions of rainfall above the threshold, separately at each time
 
 tic
-%spatialregionneighborsearch
 spatialregionneighborsearchcentroid
 toc
 
@@ -56,7 +61,6 @@ toc
 
 overlapthreshold = 0.25 ; % recommend: 0.25 for daily data (which was included with the distribution), 0.5 for 6 hourly data (historically more common basis for tracking). 
 tic
-%trackcodematrix
 trackcodematrixempty
 toc
 
