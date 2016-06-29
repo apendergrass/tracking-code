@@ -1,5 +1,5 @@
 # Tracking Code 
-Tracking code for extreme precipitation events - contiguous regions of extreme precipitation - on a cube-sphere grid, including demo
+*Matlab code to track extreme precipitation events - contiguous regions of precipitation above a threshold - on a cube-sphere grid, including a demo*
 
 
 This code package identifies and tracks contiguous regions of precipitation above a threshold. 
